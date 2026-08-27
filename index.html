@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rob Putaro — Selected Product &amp; Systems Work</title>
+<meta name="description" content="A register of product systems, internal platforms, and growth tools — built with product thinking, not marketing theater.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#e8e7e0;
+  --paper-2:#f1f0ea;
+  --well:#101216;
+  --ink:#16171b;
+  --muted:#585b62;
+  --faint:#8a8c91;
+  --line:#c7c6be;
+  --line-2:#d8d7cf;
+  --accent:#2f43a8;
+  --accent-soft:#e2e4f0;
+  --max:1240px;
+  --disp:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --body:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);line-height:1.5;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+
+.wrap{width:min(calc(100% - 40px),var(--max));margin:0 auto}
+.mono{font-family:var(--mono)}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);
+}
+
+/* ---------- MASTHEAD ---------- */
+.masthead{
+  border-bottom:1px solid var(--ink);
+  position:sticky;top:0;z-index:60;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(8px);
+}
+.mast-row{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  height:58px;
+}
+.wordmark{
+  font-family:var(--disp);font-weight:600;font-size:16px;
+  letter-spacing:.02em;display:inline-flex;align-items:center;gap:9px;
+}
+.wordmark .tick{width:7px;height:7px;background:var(--accent);display:inline-block;margin-bottom:1px}
+.mast-nav{display:flex;align-items:center;gap:26px}
+.mast-nav a{
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted);
+  padding:4px 0;border-bottom:1px solid transparent;transition:color .15s,border-color .15s;
+}
+.mast-nav a:hover{color:var(--ink);border-color:var(--accent)}
+.rev{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--faint)}
+@media(max-width:760px){.mast-nav .nl{display:none}}
+
+/* ---------- TITLE BLOCK ---------- */
+.title-block{padding:76px 0 0}
+.dateline{
+  display:flex;gap:22px;flex-wrap:wrap;align-items:baseline;
+  padding-bottom:26px;border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);
+}
+.dateline .k{color:var(--faint);text-transform:uppercase;letter-spacing:.14em;font-size:10.5px}
+.hero-h1{
+  font-family:var(--disp);font-weight:600;
+  font-size:clamp(42px,7vw,94px);line-height:.97;letter-spacing:-.035em;
+  margin:38px 0 0;max-width:16ch;
+}
+.hero-h1 .u{
+  background:linear-gradient(var(--accent),var(--accent)) left bottom/100% 3px no-repeat;
+  padding-bottom:4px;
+}
+.standfirst{
+  font-size:clamp(17px,2vw,21px);color:#2c2e33;max-width:60ch;
+  margin:30px 0 0;line-height:1.45;
+}
+.standfirst b{color:var(--ink);font-weight:600}
+
+/* spec strip — replaces metric cards */
+.spec-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  margin:52px 0 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);
+}
+.spec{
+  padding:20px 22px 20px 0;border-right:1px solid var(--line);
+}
+.spec:last-child{border-right:0}
+.spec .v{font-family:var(--disp);font-weight:500;font-size:26px;letter-spacing:-.03em;line-height:1}
+.spec .l{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:9px;line-height:1.35}
+@media(max-width:760px){
+  .spec-strip{grid-template-columns:1fr 1fr}
+  .spec{border-bottom:1px solid var(--line)}
+  .spec:nth-child(2n){border-right:0}
+}
+
+/* ---------- SECTIONS ---------- */
+.sec{padding:78px 0}
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:30px;
+  padding-bottom:20px;margin-bottom:8px;border-bottom:1px solid var(--ink);
+}
+.sec-head .h-left{display:flex;align-items:baseline;gap:16px}
+.sec-num{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--accent)}
+.sec-head h2{
+  font-family:var(--disp);font-weight:500;
+  font-size:clamp(26px,3.4vw,40px);letter-spacing:-.03em;margin:0;line-height:1;
+}
+.sec-head .note{font-family:var(--body);font-size:14px;color:var(--muted);max-width:44ch;text-align:right}
+@media(max-width:680px){.sec-head{flex-direction:column;gap:12px}.sec-head .note{text-align:left}}
+
+/* filters as mono toggles, not chips */
+.filters{display:flex;gap:24px;flex-wrap:wrap;padding:22px 0 4px;font-family:var(--mono)}
+.filter{
+  background:none;border:0;padding:2px 0;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--faint);
+  border-bottom:1px solid transparent;transition:color .15s,border-color .15s;
+}
+.filter:hover{color:var(--ink)}
+.filter.active{color:var(--ink);border-color:var(--accent)}
+
+/* ---------- BUILD INDEX ---------- */
+.index{margin-top:14px}
+.entry{
+  display:grid;grid-template-columns:3rem minmax(0,1fr) 40%;gap:34px;align-items:start;
+  padding:36px 0;border-top:1px solid var(--line);
+}
+.entry.feat{grid-template-columns:3rem minmax(0,1fr) 46%}
+.entry:first-child{border-top:1px solid var(--ink)}
+.ord{font-family:var(--mono);font-size:13px;color:var(--faint);padding-top:6px;letter-spacing:.05em}
+.entry:hover .ord{color:var(--accent)}
+.e-body{min-width:0}
+.e-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.entry h3{
+  font-family:var(--disp);font-weight:500;
+  font-size:clamp(23px,2.6vw,33px);letter-spacing:-.03em;margin:0;line-height:1.02;
+  transition:color .15s;
+}
+.entry:hover h3{color:var(--accent)}
+.flag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent);padding:2px 6px;
+}
+.entry p{margin:14px 0 0;font-size:15px;color:var(--muted);max-width:52ch;line-height:1.5}
+.specline{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--faint);
+  margin-top:18px;line-height:1.7;
+}
+.specline .t{color:var(--ink);text-transform:uppercase;letter-spacing:.1em}
+.open{
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink);
+  margin-top:22px;padding:0;border:0;background:none;
+  border-bottom:1px solid var(--line);transition:border-color .15s,color .15s;
+}
+.open:hover{color:var(--accent);border-color:var(--accent)}
+.open span{color:var(--accent)}
+
+figure.plate{margin:0}
+.plate .frame{
+  background:var(--well);border:1px solid var(--ink);overflow:hidden;
+}
+.plate .frame img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;display:block}
+.plate figcaption{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--faint);
+  margin-top:9px;display:flex;justify-content:space-between;gap:12px;
+}
+.plate figcaption .fig{color:var(--accent)}
+
+@media(max-width:860px){
+  .entry,.entry.feat{grid-template-columns:2.2rem 1fr;gap:6px 18px}
+  .entry .plate{grid-column:1/-1;margin-top:22px}
+  .plate .frame img{aspect-ratio:16/9}
+}
+
+/* index footnote */
+.index-note{
+  margin-top:28px;font-family:var(--mono);font-size:11px;letter-spacing:.03em;
+  color:var(--faint);line-height:1.7;max-width:70ch;
+}
+.index-note b{color:var(--muted);font-weight:500}
+
+/* ---------- SUPPORTING LEDGER ---------- */
+.ledger{margin-top:12px}
+.led-row{
+  display:grid;grid-template-columns:15rem minmax(0,1fr) 26%;gap:30px;align-items:start;
+  padding:26px 0;border-top:1px solid var(--line);
+}
+.led-row:first-child{border-top:1px solid var(--ink)}
+.led-cat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+.led-main h4{font-family:var(--disp);font-weight:500;font-size:20px;letter-spacing:-.02em;margin:0}
+.led-main p{margin:9px 0 0;font-size:14px;color:var(--muted);max-width:56ch}
+.led-thumb{background:var(--well);border:1px solid var(--ink);overflow:hidden;align-self:start}
+.led-thumb img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center}
+@media(max-width:860px){
+  .led-row{grid-template-columns:1fr}
+  .led-thumb{max-width:340px}
+}
+
+/* ---------- APPROACH ---------- */
+.approach{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.approach h2{
+  font-family:var(--disp);font-weight:500;
+  font-size:clamp(30px,4vw,52px);line-height:1.02;letter-spacing:-.04em;margin:0;max-width:14ch;
+}
+.approach .intro{font-size:15px;color:var(--muted);margin:22px 0 0;max-width:46ch}
+.steps{margin:0;padding:0;list-style:none;border-top:1px solid var(--ink)}
+.steps li{
+  display:grid;grid-template-columns:2.6rem 1fr;gap:18px;
+  padding:18px 0;border-bottom:1px solid var(--line);
+}
+.steps .sn{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.05em;padding-top:3px}
+.steps .st{font-family:var(--disp);font-weight:500;font-size:17px;letter-spacing:-.01em}
+.steps .sd{font-size:13.5px;color:var(--muted);margin-top:4px}
+@media(max-width:860px){.approach{grid-template-columns:1fr;gap:40px}}
+
+/* capability matrix */
+.matrix{margin-top:56px;border-top:1px solid var(--ink)}
+.mrow{
+  display:grid;grid-template-columns:11rem 1fr;gap:24px;
+  padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline;
+}
+.mrow .mk{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mrow .mv{font-family:var(--mono);font-size:13px;color:var(--ink);letter-spacing:.01em;line-height:1.9}
+.mrow .mv .sep{color:var(--faint);padding:0 4px}
+@media(max-width:680px){.mrow{grid-template-columns:1fr;gap:8px}}
+
+/* ---------- COLOPHON ---------- */
+.colophon{border-top:1px solid var(--ink);padding:56px 0 72px}
+.colo-top{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end}
+.colo-top h2{
+  font-family:var(--disp);font-weight:500;
+  font-size:clamp(28px,3.6vw,46px);line-height:1.03;letter-spacing:-.035em;margin:0;max-width:18ch;
+}
+.colo-sub{font-size:15px;color:var(--muted);margin:18px 0 0;max-width:46ch;line-height:1.5}
+.colo-mail{border-bottom:1px solid var(--accent);color:var(--ink)}
+.colo-back{
+  display:inline-block;margin-top:26px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--faint);
+}
+.colo-back:hover{color:var(--ink)}
+.colo-cta{
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+  display:inline-flex;align-items:center;gap:8px;color:var(--ink);
+  border-bottom:1px solid var(--accent);padding-bottom:3px;justify-self:end;
+}
+.colo-meta{
+  display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--faint);line-height:1.7;
+}
+@media(max-width:680px){
+  .colo-top{grid-template-columns:1fr;gap:24px;align-items:start}
+  .colo-cta{justify-self:start}
+}
+
+/* ---------- MODAL / DATASHEET ---------- */
+dialog{
+  width:min(980px,calc(100% - 28px));max-height:92vh;padding:0;color:var(--ink);
+  border:1px solid var(--ink);background:var(--paper);
+  box-shadow:0 30px 90px rgba(20,22,28,.28);
+}
+dialog::backdrop{background:rgba(22,23,27,.42);backdrop-filter:blur(2px)}
+.sheet{padding:26px 28px 30px}
+.sheet-top{display:flex;justify-content:space-between;gap:24px;align-items:start;padding-bottom:20px;border-bottom:1px solid var(--ink)}
+.sheet-tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.sheet h3{font-family:var(--disp);font-weight:500;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.035em;margin:8px 0 12px;line-height:1}
+.sheet-intro{margin:0;max-width:70ch;color:var(--muted);font-size:15px}
+.close{
+  width:36px;height:36px;flex:none;border:1px solid var(--line);background:var(--paper-2);
+  font-family:var(--mono);font-size:16px;line-height:1;color:var(--ink);
+  transition:border-color .15s,color .15s;
+}
+.close:hover{border-color:var(--accent);color:var(--accent)}
+.sheet-plate{background:var(--well);border:1px solid var(--ink);overflow:hidden;margin:22px 0 4px}
+.sheet-plate img{width:100%;display:block;max-height:52vh;object-fit:contain}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.field{padding:18px 22px 18px 0;border-bottom:1px solid var(--line)}
+.field:nth-child(odd){border-right:1px solid var(--line);padding-right:22px}
+.field b{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
+.field p{margin:0;font-size:13.5px;color:var(--ink);line-height:1.5}
+@media(max-width:640px){
+  .field-grid{grid-template-columns:1fr}
+  .field:nth-child(odd){border-right:0;padding-right:0}
+}
+
+/* focus + motion */
+a:focus-visible,button:focus-visible,.filter:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .title-block .reveal:nth-child(2){animation-delay:.06s}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap mast-row">
+    <a class="wordmark" href="#top">ROB PUTARO<span class="tick"></span></a>
+    <nav class="mast-nav">
+      <a class="nl" href="#work">Builds</a>
+      <a class="nl" href="#supporting">Systems</a>
+      <a class="nl" href="#approach">Approach</a>
+      <a class="nl" href="#contact">Contact</a>
+      <span class="rev">REV 05</span>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- TITLE BLOCK -->
+  <section class="title-block">
+    <div class="wrap">
+      <div class="dateline reveal">
+        <span><span class="k">Role</span> &nbsp;Product &amp; systems designer</span>
+        <span><span class="k">Field</span> &nbsp;Aesthetics &amp; medspa</span>
+        <span><span class="k">Based</span> &nbsp;San Diego</span>
+      </div>
+      <h1 class="hero-h1 reveal">I build tools that make strategy <span class="u">usable.</span></h1>
+      <p class="standfirst reveal">I'm a product designer and builder. I turn messy business problems into <b>working tools</b> — internal systems, growth calculators, diagnostics, and data products — mostly for aesthetics clinics and the teams that serve them.</p>
+
+      <div class="spec-strip reveal">
+        <div class="spec"><div class="v">0→1</div><div class="l">concept · UX · logic · prototype · iteration</div></div>
+        <div class="spec"><div class="v">10K+</div><div class="l">clinic records structured across intelligence builds</div></div>
+        <div class="spec"><div class="v">Tools-first</div><div class="l">usable systems over campaign work</div></div>
+        <div class="spec"><div class="v">Fast loops</div><div class="l">built on live founder &amp; operator feedback</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILD INDEX -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="h-left">
+          <span class="sec-num">§01</span>
+          <h2>Selected builds</h2>
+        </div>
+        <p class="note">Six products I've designed and built. Open any one for a short case study — the problem, what I made, and my role.</p>
+      </div>
+
+      <div class="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="product">Product</button>
+        <button class="filter" data-filter="growth">Growth tools</button>
+        <button class="filter" data-filter="ops">Internal · ops</button>
+      </div>
+
+      <div class="index">
+
+        <article class="entry feat" data-category="product">
+          <div class="ord">01</div>
+          <div class="e-body">
+            <div class="e-head"><h3>Astra Advisor</h3><span class="flag">Featured</span></div>
+            <p>An always-available clinic copilot that answers client-specific questions using Astra frameworks, saved clinic context, and a diagnostic logic layer — instead of behaving like a generic chatbot.</p>
+            <div class="specline"><span class="t">AI product</span> · clinic advisory · 2026<br>Clinic profiles · context-aware Q&amp;A · diagnostic logic · action plans</div>
+            <button class="open" data-case="advisor">Open case study <span>↗</span></button>
+          </div>
+          <figure class="plate">
+            <div class="frame"><img src="assets/astra-advisor.png" alt="Astra Advisor interface"></div>
+            <figcaption><span class="fig">FIG. 01</span><span>Working UI</span></figcaption>
+          </figure>
+        </article>
+
+        <article class="entry feat" data-category="product">
+          <div class="ord">02</div>
+          <div class="e-body">
+            <div class="e-head"><h3>Clinic Growth Studio</h3><span class="flag">Featured</span></div>
+            <p>A full-screen presentation engine built for whiteboards, founder-led videos, webinars, and live demos — turning clinic inputs into dynamic visual stories instead of static slides.</p>
+            <div class="specline"><span class="t">Interactive system</span> · presentation · 2026<br>Presenter mode · live inputs · story modules · fullscreen stage</div>
+            <button class="open" data-case="studio">Open case study <span>↗</span></button>
+          </div>
+          <figure class="plate">
+            <div class="frame"><img src="assets/clinic-growth-studio.png" alt="Clinic Growth Studio interface"></div>
+            <figcaption><span class="fig">FIG. 02</span><span>Working UI</span></figcaption>
+          </figure>
+        </article>
+
+        <article class="entry feat" data-category="ops">
+          <div class="ord">03</div>
+          <div class="e-body">
+            <div class="e-head"><h3>Sales Outreach Engine</h3><span class="flag">Featured</span></div>
+            <p>A practical internal system for turning raw clinic lists into a controlled outreach workflow — with prioritization, ownership, pitch routing, contact logging, and rep-specific daily queues.</p>
+            <div class="specline"><span class="t">Internal platform</span> · sales ops · 2026<br>Lead scoring · assignments · Looped-vs-Astra routing · daily queue</div>
+            <button class="open" data-case="sales">Open case study <span>↗</span></button>
+          </div>
+          <figure class="plate">
+            <div class="frame"><img src="assets/sales-outreach-engine.svg" alt="Sales Outreach Engine system view"></div>
+            <figcaption><span class="fig">FIG. 03</span><span>System view</span></figcaption>
+          </figure>
+        </article>
+
+        <article class="entry" data-category="ops">
+          <div class="ord">04</div>
+          <div class="e-body">
+            <h3>White-Label Asset Generator</h3>
+            <p>An operator-facing configuration tool for adjusting clinic branding, assets, overlays, and app-preview behavior while keeping white-label output visually consistent.</p>
+            <div class="specline"><span class="t">Internal tool</span> · white labeling · 2026<br>Live preview · asset controls · branding system</div>
+            <button class="open" data-case="whitelabel">Open case study <span>↗</span></button>
+          </div>
+          <figure class="plate">
+            <div class="frame"><img src="assets/white-label-generator.png" alt="White-label asset generator"></div>
+            <figcaption><span class="fig">FIG. 04</span><span>Working UI</span></figcaption>
+          </figure>
+        </article>
+
+        <article class="entry" data-category="growth">
+          <div class="ord">05</div>
+          <div class="e-body">
+            <h3>Retention Revenue Tool</h3>
+            <p>A clinic-facing calculator that turns rebooking and retention behavior into a clean financial story, with adjustable inputs and a lightweight journey audit.</p>
+            <div class="specline"><span class="t">Growth tool</span> · retention · 2026<br>Live calculation · revenue scenarios · audit layer</div>
+            <button class="open" data-case="retention">Open case study <span>↗</span></button>
+          </div>
+          <figure class="plate">
+            <div class="frame"><img src="assets/retention-revenue-tool.png" alt="Retention revenue tool"></div>
+            <figcaption><span class="fig">FIG. 05</span><span>Working UI</span></figcaption>
+          </figure>
+        </article>
+
+        <article class="entry" data-category="growth">
+          <div class="ord">06</div>
+          <div class="e-body">
+            <h3>Device Performance Audit</h3>
+            <p>A guided audit built for live review — surfacing the gap between what a clinic believes about performance and the operating signals underneath it.</p>
+            <div class="specline"><span class="t">Diagnostic tool</span> · live audit · 2026<br>Belief-vs-reality · scorecard · presenter briefing</div>
+            <button class="open" data-case="audit">Open case study <span>↗</span></button>
+          </div>
+          <figure class="plate">
+            <div class="frame"><img src="assets/device-performance-audit.png" alt="Device performance audit"></div>
+            <figcaption><span class="fig">FIG. 06</span><span>Working UI</span></figcaption>
+          </figure>
+        </article>
+
+      </div>
+
+      <p class="index-note"><b>Note —</b> before public sharing, scrub any client-specific names or internal data that should stay private.</p>
+    </div>
+  </section>
+
+  <!-- SUPPORTING LEDGER -->
+  <section class="sec" id="supporting">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="h-left">
+          <span class="sec-num">§02</span>
+          <h2>Supporting systems</h2>
+        </div>
+        <p class="note">Additional builds that strengthen the story, even when they don't need top billing.</p>
+      </div>
+
+      <div class="ledger">
+        <div class="led-row">
+          <div class="led-cat">Business tool<br>Revenue modeling</div>
+          <div class="led-main">
+            <h4>Clinic Revenue Opportunity Suite</h4>
+            <p>Combines front-desk conversion and retention modeling into one interface, so a clinic sees a single coherent growth story instead of scattered calculators.</p>
+          </div>
+          <div class="led-thumb"><img src="assets/revenue-opportunity-suite.png" alt="Clinic Revenue Opportunity Suite"></div>
+        </div>
+
+        <div class="led-row">
+          <div class="led-cat">Data product<br>Market intelligence</div>
+          <div class="led-main">
+            <h4>Clinic Intelligence Engine</h4>
+            <p>Transforms messy provider lists into enriched, filterable clinic intelligence — segmentation, device signals, location data, and targeting value.</p>
+          </div>
+          <div class="led-thumb"><img src="assets/clinic-intelligence-engine.png" alt="Clinic Intelligence Engine"></div>
+        </div>
+
+        <div class="led-row">
+          <div class="led-cat">Workflow platform<br>Internal ops</div>
+          <div class="led-main">
+            <h4>Conveyor Strategy OS</h4>
+            <p>A shared system for idea intake, strategy, assignment, review, attachments, timestamps, and executive visibility across moving projects.</p>
+          </div>
+          <div class="led-thumb"><img src="assets/conveyor-strategy-os.png" alt="Conveyor Strategy OS"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="sec" id="approach">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="h-left">
+          <span class="sec-num">§03</span>
+          <h2>Approach</h2>
+        </div>
+        <p class="note">Closer to product thinking than traditional creative.</p>
+      </div>
+
+      <div class="approach">
+        <div>
+          <h2>I usually enter through a creative, sales, or operational problem — and end up building the system underneath it.</h2>
+          <p class="intro">The output might be a diagnostic, calculator, internal workflow, presentation system, client copilot, or data product. The through-line stays the same: make abstract strategy tangible enough to use.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="sn">01</span><div><div class="st">Understand the operator</div><div class="sd">Start from the person who has to run it, not the org chart.</div></div></li>
+          <li><span class="sn">02</span><div><div class="st">Simplify the decision</div><div class="sd">Find the one call the tool exists to make easier.</div></div></li>
+          <li><span class="sn">03</span><div><div class="st">Design the interface</div><div class="sd">Shape the surface before the feature list grows.</div></div></li>
+          <li><span class="sn">04</span><div><div class="st">Wire up the logic</div><div class="sd">Scoring, routing, math — the part that actually decides.</div></div></li>
+          <li><span class="sn">05</span><div><div class="st">Ship something usable</div><div class="sd">Put a working version in someone's hands, fast.</div></div></li>
+        </ol>
+      </div>
+
+      <div class="matrix">
+        <div class="mrow"><div class="mk">Product</div><div class="mv">0→1 prototyping<span class="sep">·</span>UX / interaction<span class="sep">·</span>admin workflows<span class="sep">·</span>product strategy<span class="sep">·</span>feature logic</div></div>
+        <div class="mrow"><div class="mk">Systems</div><div class="mv">Workflow design<span class="sep">·</span>internal tools<span class="sep">·</span>sales ops<span class="sep">·</span>knowledge systems<span class="sep">·</span>automation concepts</div></div>
+        <div class="mrow"><div class="mk">Data</div><div class="mv">Cleanup<span class="sep">·</span>enrichment<span class="sep">·</span>segmentation<span class="sep">·</span>scoring<span class="sep">·</span>market intelligence</div></div>
+        <div class="mrow"><div class="mk">Creative</div><div class="mv">Visual systems<span class="sep">·</span>presentation design<span class="sep">·</span>messaging<span class="sep">·</span>creative direction<span class="sep">·</span>content utility</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="colophon" id="contact">
+  <div class="wrap">
+    <div class="colo-top">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">Get in touch</div>
+        <h2>I like building the thing people wish existed.</h2>
+        <p class="colo-sub">Have a tool you wish existed, or a messy problem that needs a system underneath it? I'm open to product &amp; systems work.</p>
+      </div>
+      <!-- REPLACE hello@robputaro.com with your real email in both places below -->
+      <a class="colo-cta" href="mailto:hello@robputaro.com">Email me →</a>
+    </div>
+    <div class="colo-meta">
+      <span>Rob Putaro · Product &amp; systems designer · San Diego · <a class="colo-mail" href="mailto:hello@robputaro.com">hello@robputaro.com</a></span>
+      <span>Set in Space Grotesk &amp; IBM Plex · One hand-built HTML document · REV 05</span>
+    </div>
+    <a class="colo-back" href="#top">↑ Back to top</a>
+  </div>
+</footer>
+
+<dialog id="modal">
+  <div class="sheet">
+    <div class="sheet-top">
+      <div>
+        <div class="sheet-tag" id="mTag"></div>
+        <h3 id="mTitle"></h3>
+        <p class="sheet-intro" id="mIntro"></p>
+      </div>
+      <button class="close" id="close" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-plate"><img id="mImg" alt=""></div>
+    <div class="field-grid">
+      <div class="field"><b>Problem</b><p id="mProblem"></p></div>
+      <div class="field"><b>Build</b><p id="mBuild"></p></div>
+      <div class="field"><b>My role</b><p id="mRole"></p></div>
+      <div class="field"><b>Outcome</b><p id="mWhy"></p></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const cases = {
+  advisor: {
+    title:'Astra Advisor',
+    tag:'AI product · clinic advisory',
+    img:'assets/astra-advisor.png',
+    intro:'A product concept that extends a consulting relationship beyond scheduled meetings by turning firm knowledge into an available advisory layer.',
+    problem:'Consulting clients have questions between calls, but a team cannot manually answer every small, repetitive, or clinic-specific question in real time.',
+    build:'Clinic profile context, grounded advisory behavior, diagnostic framing, guided Q&A, and action-plan outputs in one interface.',
+    role:'Product concept, interaction model, information architecture, UX direction, prototype framing, and productization thinking.',
+    why:'It shifts consulting knowledge from a service-only asset into a scalable product layer.'
+  },
+  studio: {
+    title:'Clinic Growth Studio',
+    tag:'Interactive system · presentation',
+    img:'assets/clinic-growth-studio.png',
+    intro:'A reusable visual system built for live presenting, founder content, demos, and webinars.',
+    problem:'Static slides and one-off calculators made growth concepts harder to explain dynamically and created repetitive content formats.',
+    build:'Story modules, live clinic inputs, output-format switching, presenter controls, and fullscreen presentation mode.',
+    role:'Concept, UX, visual system direction, interaction model, and presenter-workflow design.',
+    why:'The interface becomes a content engine rather than just a single-use deck.'
+  },
+  sales: {
+    title:'Sales Outreach Engine',
+    tag:'Internal platform · sales ops',
+    img:'assets/sales-outreach-engine.svg',
+    intro:'A practical internal system for turning unstructured lead lists into a controlled outreach workflow.',
+    problem:'Thousands of clinic records were difficult to prioritize, rep ownership was unclear, and Looped vs Astra opportunities could easily be routed incorrectly.',
+    build:'CSV ingestion, lead scoring, profile-based ownership, assignment logic, route hypotheses, daily queues, and contact logging.',
+    role:'Workflow design, product requirements, UX simplification, scoring logic, prototype iteration, and implementation guidance.',
+    why:'It turns scattered spreadsheets into a clearer operating system for outreach — and demonstrates product thinking beyond surface-level creative work.'
+  },
+  whitelabel: {
+    title:'White-Label Asset Generator',
+    tag:'Internal tool · white labeling',
+    img:'assets/white-label-generator.png',
+    intro:'An internal utility for configuring branded clinic app experiences with visual feedback instead of guesswork.',
+    problem:'White-labeling involves lots of small visual decisions that are hard to evaluate without seeing the effect in context.',
+    build:'Asset controls, overlay handling, live mockup preview, tint settings, brand components, and visual output review.',
+    role:'System concept, workflow design, prototype direction, UX structure, and QA refinement.',
+    why:'It makes a repetitive internal process faster, clearer, and more scalable.'
+  },
+  retention: {
+    title:'Retention Revenue Tool',
+    tag:'Growth tool · retention',
+    img:'assets/retention-revenue-tool.png',
+    intro:'A clinic-facing calculator for making the financial value of retention and rebooking immediately visible.',
+    problem:'Retention is easy to talk about abstractly; operators need to see what a change in patient behavior means in dollars.',
+    build:'Adjustable inputs, opportunity math, comparison states, and a lightweight audit layer around the patient journey.',
+    role:'Problem framing, UX structure, visual storytelling, modeling direction, and prototype iteration.',
+    why:'It helps strategy land faster by translating behavior into money.'
+  },
+  audit: {
+    title:'Device Performance Audit',
+    tag:'Diagnostic tool · live audit',
+    img:'assets/device-performance-audit.png',
+    intro:'A guided audit designed to feel intentional and presentation-ready in a live event or strategy session.',
+    problem:'A simple questionnaire would collect answers, but it would not reveal the operational gap in a compelling way.',
+    build:'Belief-vs-reality questions, device context, scoring, participant-facing outputs, and a presenter briefing layer.',
+    role:'Experience concept, UX flow, question structure, scoring/story logic, and visual system direction.',
+    why:'It turns a conversation into a structured diagnostic moment with clearer leverage.'
+  }
+};
+
+const modal = document.getElementById('modal');
+const mTitle = document.getElementById('mTitle');
+const mTag = document.getElementById('mTag');
+const mIntro = document.getElementById('mIntro');
+const mImg = document.getElementById('mImg');
+const mProblem = document.getElementById('mProblem');
+const mBuild = document.getElementById('mBuild');
+const mRole = document.getElementById('mRole');
+const mWhy = document.getElementById('mWhy');
+
+document.querySelectorAll('[data-case]').forEach(btn => btn.addEventListener('click', () => {
+  const c = cases[btn.dataset.case];
+  mTitle.textContent = c.title;
+  mTag.textContent = c.tag;
+  mIntro.textContent = c.intro;
+  mImg.src = c.img;
+  mImg.alt = c.title + ' interface';
+  mProblem.textContent = c.problem;
+  mBuild.textContent = c.build;
+  mRole.textContent = c.role;
+  mWhy.textContent = c.why;
+  modal.showModal();
+}));
+
+document.getElementById('close').onclick = () => modal.close();
+modal.addEventListener('click', e => {
+  const r = modal.querySelector('.sheet').getBoundingClientRect();
+  const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+  if (!inside) modal.close();
+});
+
+document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.filter').forEach(x => x.classList.remove('active'));
+  btn.classList.add('active');
+  const f = btn.dataset.filter;
+  document.querySelectorAll('.entry').forEach(card => {
+    card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
+  });
+}));
+</script>
+</body>
+</html>
