@@ -6,65 +6,236 @@
   <meta name="description" content="Interactive concept prototype reorganizing Dr. Rose's Baby published congestion guidance into a parent-first experience." />
   <title>Dr. Rose's Baby — Breathe Easy Guide Concept</title>
   <style>
-    :root{--ink:#2f2a2a;--muted:#756b6b;--line:#eadfdf;--cream:#fffaf7;--paper:#ffffff;--rose:#b96f78;--rose-deep:#975560;--rose-soft:#f7eaec;--sage:#eff4ef;--warn:#fff5ec;--shadow:0 18px 50px rgba(75,49,49,.09);--radius:24px}
+    :root{
+      --ink:#322d2d;--muted:#766d6d;--line:#eadfdd;--cream:#fffaf6;--paper:#fff;
+      --rose:#bc737b;--rose-deep:#965761;--rose-soft:#f7e9eb;--sage:#edf4ef;--sage-deep:#58675d;
+      --warm:#f8f0e8;--warn:#fff5ec;--shadow:0 20px 60px rgba(72,47,47,.08)
+    }
     *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);line-height:1.5}
+    body{margin:0;color:var(--ink);background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
     button,a{font:inherit} button{cursor:pointer}
-    .wrap{width:min(980px,calc(100% - 28px));margin:0 auto;padding:24px 0 48px}
-    .topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:6px 2px 18px}
-    .brand{font-family:Georgia,"Times New Roman",serif;font-size:21px;font-weight:700;letter-spacing:.01em}
-    .concept{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rose-deep);background:var(--rose-soft);padding:8px 11px;border-radius:999px}
-    .hero{background:var(--paper);border:1px solid var(--line);border-radius:32px;box-shadow:var(--shadow);padding:28px;margin-bottom:18px;overflow:hidden;position:relative}
-    .hero:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:var(--rose-soft);right:-90px;top:-120px;opacity:.7}
-    .eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-deep);position:relative;z-index:1}
+    .wrap{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:20px 0 52px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 2px 18px}
+    .brand{display:flex;align-items:center;gap:10px;min-width:0}
+    .brandmark{width:36px;height:36px;border-radius:50% 50% 46% 54% / 58% 45% 55% 42%;background:var(--rose-soft);
+      border:1px solid #e8ced2;display:grid;place-items:center;color:var(--rose-deep);font-family:Georgia,serif;font-weight:700;font-size:18px}
+    .brandname{font-family:Georgia,"Times New Roman",serif;font-size:21px;font-weight:700;white-space:nowrap}
+    .concept{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--rose-deep);
+      background:var(--rose-soft);padding:8px 11px;border-radius:999px;white-space:nowrap}
+    .hero{position:relative;overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:34px;box-shadow:var(--shadow);padding:34px 34px 30px;margin-bottom:18px}
+    .hero:before{content:"";position:absolute;inset:auto -70px -90px auto;width:260px;height:260px;border-radius:50%;background:var(--rose-soft);opacity:.8}
+    .hero:after{content:"";position:absolute;right:64px;bottom:42px;width:115px;height:115px;border-radius:48% 52% 44% 56% / 60% 39% 61% 40%;
+      border:16px solid rgba(188,115,123,.12);transform:rotate(-18deg)}
+    .eyebrow{position:relative;z-index:1;font-size:12px;font-weight:850;letter-spacing:.15em;text-transform:uppercase;color:var(--rose-deep)}
     h1,h2,h3,p{margin-top:0}
-    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(32px,6vw,56px);line-height:1.02;margin:8px 0 12px;max-width:720px;position:relative;z-index:1}
-    .sub{font-size:clamp(16px,2.5vw,20px);color:var(--muted);max-width:720px;margin-bottom:0;position:relative;z-index:1}
-    .panel{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:0 10px 35px rgba(75,49,49,.05)}
-    .intro{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:16px}.intro h2{font-size:23px;margin-bottom:5px}.intro p{color:var(--muted);margin-bottom:0;max-width:650px}
+    h1{position:relative;z-index:1;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,60px);line-height:1.01;margin:9px 0 13px;max-width:760px}
+    .sub{position:relative;z-index:1;font-size:clamp(16px,2.4vw,20px);color:var(--muted);max-width:720px;margin-bottom:18px}
+    .trustrow{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap}
+    .trust{font-size:12px;font-weight:750;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;color:#5e5757}
+    .panel{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:30px;padding:24px;box-shadow:0 12px 36px rgba(72,47,47,.04)}
+    .intro{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:17px}
+    .intro h2{font-family:Georgia,"Times New Roman",serif;font-size:28px;margin-bottom:5px}
+    .intro p{color:var(--muted);margin-bottom:0;max-width:680px}
     .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-    .choice{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:20px;padding:18px;text-align:left;color:var(--ink);transition:.18s ease;min-height:132px;display:flex;flex-direction:column;justify-content:space-between}
-    .choice:hover{transform:translateY(-2px);border-color:#dcbfc4;box-shadow:0 10px 24px rgba(75,49,49,.08)}
-    .choice:focus-visible,.btn:focus-visible,.back:focus-visible{outline:3px solid rgba(185,111,120,.28);outline-offset:2px}
-    .choice-title{font-weight:800;font-size:17px;margin-bottom:5px}.choice-sub{color:var(--muted);font-size:14px}.explore{font-size:14px;font-weight:800;color:var(--rose-deep);margin-top:16px}
-    .note{background:var(--sage);border:1px solid #dbe7db;border-radius:18px;padding:14px 16px;font-size:13px;color:#556358;margin-top:14px}
-    .navrow{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}.back{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 13px;color:var(--ink);font-weight:700}
-    .label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--muted)}
-    .card{border:1px solid var(--line);background:#fff;border-radius:26px;padding:24px}.card h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(27px,5vw,39px);line-height:1.08;margin-bottom:12px}.card p{font-size:16px}
-    .muted{color:var(--muted)}.actions{display:grid;gap:10px;margin-top:18px}
-    .btn{display:block;width:100%;border-radius:15px;padding:14px 16px;text-align:left;font-weight:800;border:1px solid var(--line);background:#fff;color:var(--ink)}
-    .btn.primary{background:var(--rose);border-color:var(--rose);color:#fff}.btn.primary:hover{background:var(--rose-deep)}.btn:hover{border-color:#dcbfc4}
-    .steps{display:grid;gap:15px}.step{display:flex;gap:13px;align-items:flex-start}.num{width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:var(--rose-soft);color:var(--rose-deep);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900}
+    .choice{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:22px;padding:19px;text-align:left;color:var(--ink);
+      transition:.18s ease;min-height:138px;display:flex;flex-direction:column;justify-content:space-between}
+    .choice:hover{transform:translateY(-2px);border-color:#dabcc1;box-shadow:0 12px 26px rgba(72,47,47,.07)}
+    .choice:focus-visible,.btn:focus-visible,.back:focus-visible,.restart:focus-visible{outline:3px solid rgba(188,115,123,.28);outline-offset:2px}
+    .choice-top{display:flex;gap:12px;align-items:flex-start}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--rose);margin-top:7px;flex:0 0 10px}
+    .choice-title{font-weight:820;font-size:17px;margin-bottom:5px}.choice-sub{color:var(--muted);font-size:14px}
+    .explore{font-size:14px;font-weight:850;color:var(--rose-deep);margin-top:17px}
+    .note{background:var(--sage);border:1px solid #d9e5dc;border-radius:18px;padding:14px 16px;font-size:13px;color:var(--sage-deep);margin-top:14px}
+    .prototype-note{margin-top:14px;font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+    .prototype-note strong{color:var(--ink)}
+    .navrow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px;flex-wrap:wrap}
+    .navleft{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .back,.restart{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 13px;color:var(--ink);font-weight:760}
+    .restart{font-size:13px;color:var(--muted)}
+    .label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:850;color:var(--muted)}
+    .card{border:1px solid var(--line);background:#fff;border-radius:27px;padding:26px}
+    .card h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(28px,5vw,42px);line-height:1.06;margin-bottom:13px;max-width:780px}
+    .card p{font-size:16px;max-width:820px}
+    .muted{color:var(--muted)}.actions{display:grid;gap:10px;margin-top:20px;max-width:760px}
+    .btn{display:block;width:100%;border-radius:15px;padding:14px 16px;text-align:left;font-weight:820;border:1px solid var(--line);background:#fff;color:var(--ink)}
+    .btn.primary{background:var(--rose);border-color:var(--rose);color:#fff}.btn.primary:hover{background:var(--rose-deep)}.btn:hover{border-color:#d9b9be}
+    .btn.external{display:flex;justify-content:space-between;align-items:center;text-decoration:none;background:var(--warm)}
+    .steps{display:grid;gap:16px;margin:17px 0 4px}.step{display:flex;gap:13px;align-items:flex-start}
+    .num{width:36px;height:36px;flex:0 0 36px;border-radius:50%;background:var(--rose-soft);color:var(--rose-deep);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900}
     .step strong{display:block;margin-bottom:3px}.step span{font-size:14px;color:var(--muted)}
-    .safety{border-left:5px solid #d0946f;background:var(--warn);border-radius:18px;padding:16px 18px;margin:15px 0}.safety ul{margin:0;padding-left:20px}.safety li{margin:7px 0}
-    .compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.mini{border:1px solid var(--line);border-radius:18px;padding:15px;background:#fff}.mini strong{display:block;margin-bottom:7px}.mini p{font-size:14px;color:var(--muted);margin:0}
-    .footer{margin-top:16px;padding:5px 3px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.footer a{color:var(--rose-deep);text-decoration-thickness:1px;text-underline-offset:3px}
-    .source{margin-top:17px;border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--muted)}.source a{color:var(--rose-deep)}
-    @media(max-width:680px){.wrap{width:min(100% - 20px,980px);padding-top:14px}.topbar{align-items:flex-start}.concept{font-size:10px;letter-spacing:.1em;padding:7px 9px;text-align:center}.hero{padding:22px;border-radius:25px}.panel{padding:15px;border-radius:22px}.grid{grid-template-columns:1fr}.choice{min-height:116px}.compare{grid-template-columns:1fr}.card{padding:20px;border-radius:22px}}
+    .safety{border-left:5px solid #d0946f;background:var(--warn);border-radius:18px;padding:16px 18px;margin:16px 0}
+    .safety ul{margin:0;padding-left:20px}.safety li{margin:7px 0}
+    .compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+    .mini{border:1px solid var(--line);border-radius:19px;padding:16px;background:#fff}.mini strong{display:block;margin-bottom:7px}.mini p{font-size:14px;color:var(--muted);margin:0}
+    .dr-card{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;background:var(--rose-soft);border:1px solid #ead1d5;border-radius:20px;padding:15px;margin-top:18px}
+    .dr-badge{width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid #e6c8cd;display:grid;place-items:center;font-family:Georgia,serif;font-weight:800;color:var(--rose-deep)}
+    .dr-card strong{display:block}.dr-card span{font-size:13px;color:#685d5f}
+    .source{margin-top:19px;border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--muted)}
+    .source a{color:var(--rose-deep);text-underline-offset:3px}
+    .footer{margin-top:16px;padding:6px 3px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    .conceptbox{margin-top:18px;background:#fff;border:1px dashed #d9c7c7;border-radius:21px;padding:18px}
+    .conceptbox h3{font-size:15px;margin-bottom:6px}.conceptbox p{font-size:13px;color:var(--muted);margin-bottom:0}
+    @media(max-width:700px){
+      .wrap{width:min(100% - 20px,1040px);padding-top:12px}.topbar{align-items:flex-start}.brandname{font-size:18px}.brandmark{width:32px;height:32px}
+      .concept{font-size:9px;letter-spacing:.08em;padding:7px 8px;text-align:center;white-space:normal;max-width:120px}.hero{padding:24px 21px;border-radius:26px}
+      .hero:after{display:none}.panel{padding:15px;border-radius:23px}.grid{grid-template-columns:1fr}.choice{min-height:118px}.intro h2{font-size:24px}
+      .compare{grid-template-columns:1fr}.card{padding:20px;border-radius:22px}.dr-card{grid-template-columns:1fr}.navrow{align-items:flex-start}
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <div class="topbar"><div class="brand">Dr. Rose’s Baby</div><div class="concept">Interactive concept prototype</div></div>
-    <section class="hero"><div class="eyebrow">Breathe Easy Guide</div><h1>Find the guidance that matches what’s happening right now.</h1><p class="sub">A parent-first concept that reorganizes Dr. Rose’s existing published congestion guidance into a faster, easier path.</p></section>
+    <div class="topbar">
+      <div class="brand"><div class="brandmark">R</div><div class="brandname">Dr. Rose’s Baby</div></div>
+      <div class="concept">Interactive concept prototype</div>
+    </div>
+
+    <section class="hero">
+      <div class="eyebrow">Breathe Easy Guide</div>
+      <h1>What does your baby need right now?</h1>
+      <p class="sub">A quicker path to the congestion guidance Dr. Rose’s has already created — organized around what a parent is experiencing in the moment.</p>
+      <div class="trustrow">
+        <span class="trust">Pediatrician-founded</span>
+        <span class="trust">Built from existing Dr. Rose’s guidance</span>
+        <span class="trust">No new medical advice added</span>
+      </div>
+    </section>
+
     <div id="screen" aria-live="polite"></div>
   </main>
+
   <script>
     const screen=document.getElementById('screen');
-    function choice(id,title,sub){return `<button class="choice" type="button" data-route="${id}"><div><div class="choice-title">${title}</div><div class="choice-sub">${sub}</div></div><div class="explore">Explore →</div></button>`}
-    function footer(){return `<div class="footer"><span>Concept prototype by Robert Putaro.</span><span>Content reorganized from Dr. Rose’s Baby published materials.</span></div>`}
-    function source(){return `<div class="source">Source basis: <a href="https://drrosesbaby.com/faq/" target="_blank" rel="noopener noreferrer">Dr. Rose’s Baby FAQ</a> and <a href="https://drrosesbaby.com/product/dr-roses-nasal-aspirator/" target="_blank" rel="noopener noreferrer">product guidance</a>. This prototype does not diagnose, replace medical care, or add new medical guidance.</div>`}
-    function home(){return `<section class="panel"><div class="intro"><div><h2>What’s going on right now?</h2><p>Choose the closest match. The experience routes parents to information Dr. Rose’s has already published.</p></div></div><div class="grid">${choice('congestion','My baby sounds congested','Noisy breathing, visible mucus, general stuffiness')}${choice('feeding','Stuffiness is making feeding harder','Baby keeps pulling away or pausing to breathe')}${choice('sleep','Stuffiness is disrupting sleep','Waking, snuffling, trouble settling')}${choice('call','I’m wondering if I should call the pediatrician','See Dr. Rose’s published red-flag guidance')}${choice('use','I need help using Dr. Rose’s','Simple step-by-step product guidance')}${choice('compare','Why is Dr. Rose’s different?','See how the product is positioned vs. other aspirators')}</div><div class="note"><strong>Prototype principle:</strong> no new medical advice is being created here. The concept is to make existing physician-authored information easier to navigate in the moment.</div>${footer()}</section>`}
-    function shell(label,title,body,extra=''){return `<section class="panel"><div class="navrow"><button class="back" type="button" data-route="home">← Back</button><span class="label">${label}</span></div><div class="card"><h2>${title}</h2>${body}${extra}${source()}</div>${footer()}</section>`}
-    function congestion(){return shell('Congestion guide','Does this sound like what you’re seeing?',`<p>Dr. Rose’s FAQ lists signs such as noisy breathing, visible mucus, interrupted feeding, disrupted sleep, and unusual fussiness as things parents may notice with nasal congestion.</p><p class="muted">If that matches what you’re seeing, the next useful step is to surface Dr. Trevino’s published congestion-relief guidance without making a tired parent dig through a long FAQ.</p>`,`<div class="actions"><button class="btn primary" type="button" data-route="use">Show me how Dr. Trevino recommends using the aspirator →</button><button class="btn" type="button" data-route="call">Show me when Dr. Rose’s says to call the pediatrician →</button></div>`)}
-    function feeding(){return shell('Feeding + congestion','When stuffiness interrupts feeding',`<p>Dr. Rose’s notes that congestion can make feeding harder because babies rely heavily on nasal breathing. A congested baby may pull away from the breast or bottle more often to catch a breath.</p><p class="muted">This path brings that specific information forward immediately, then gives parents a direct route to the relevant congestion and product-use guidance.</p>`,`<div class="actions"><button class="btn primary" type="button" data-route="use">See Dr. Trevino’s product-use steps →</button><button class="btn" type="button" data-route="call">Review pediatrician-contact guidance →</button></div>`)}
-    function sleep(){return shell('Sleep + congestion','When a stuffy nose is disrupting sleep',`<p>Dr. Rose’s includes disrupted sleep and noisy breathing among the signs parents may notice when a baby is congested.</p><p class="muted">Rather than sending a tired parent into a content library, this concept brings the relevant information forward in a couple of taps.</p>`,`<div class="actions"><button class="btn primary" type="button" data-route="use">Show me the published congestion-relief steps →</button></div>`)}
-    function step(n,title,text){return `<div class="step"><div class="num">${n}</div><div><strong>${title}</strong><span>${text}</span></div></div>`}
-    function use(){return shell('How to use','Dr. Trevino’s published approach',`<div class="steps">${step(1,'Saline first','Apply one or two drops of infant saline and wait about 30–60 seconds to let it loosen mucus.')}${step(2,'Position gently','Aim the soft silicone tip only slightly into the nostril.')}${step(3,'Squeeze and release','Squeeze and release the bulb to generate suction.')}${step(4,'Continue without repeated reinsertion','The design allows repeated squeezing and releasing while the tip stays in place until the nostril is clear.')}${step(5,'Repeat on the other side if needed','Use the same approach for the other nostril as needed.')}</div>`,`<div class="note"><strong>Growth thought:</strong> the information already exists. The opportunity is making it easier to find at the exact moment a parent needs it, then measuring which traffic sources drive engagement and product consideration.</div>`)}
-    function call(){return shell('Published safety guidance','When Dr. Rose’s says to contact your pediatrician',`<p>The FAQ tells parents to contact a pediatrician for concerning symptoms rather than relying only on home suction.</p><div class="safety"><ul><li>A fever, particularly in infants under 3 months</li><li>Difficulty breathing, rapid breathing, or nostril flaring</li><li>Significant trouble feeding or signs of dehydration</li><li>Congestion that does not improve or worsens over several days</li><li>Thick yellow or green mucus lasting more than 10–14 days</li><li>Any symptoms that feel concerning to the parent</li></ul></div><p><strong>Dr. Rose’s published guidance: when in doubt, call your doctor.</strong></p><p class="muted">This prototype intentionally does not decide whether a child is “safe” or diagnose a condition. It only surfaces the company’s own published guidance.</p>`)}
-    function compare(){return shell('Product education','Why Dr. Rose’s positions the product differently',`<div class="compare"><div class="mini"><strong>Traditional bulb</strong><p>Dr. Rose’s site highlights repeated squeeze/insert cycles, limited visibility, and harder cleaning.</p></div><div class="mini"><strong>Mouth suction</strong><p>Their positioning emphasizes avoiding parent mouth contact, replacement filters, and extra parts.</p></div><div class="mini"><strong>Dr. Rose’s</strong><p>Patented continuous suction, transparent silicone construction, no batteries, and no replacement filters.</p></div></div>`,`<div class="actions"><button class="btn primary" type="button" data-route="use">See how the product is used →</button></div>`)}
+
+    function choice(id,title,sub){
+      return `<button class="choice" type="button" data-route="${id}">
+        <div class="choice-top"><span class="dot"></span><div><div class="choice-title">${title}</div><div class="choice-sub">${sub}</div></div></div>
+        <div class="explore">Show me →</div>
+      </button>`
+    }
+
+    function footer(){
+      return `<div class="footer"><span>Concept prototype by Robert Putaro.</span><span>Not affiliated with or published by Rose Medical Innovations.</span></div>`
+    }
+
+    function source(){
+      return `<div class="source">Information shown in this prototype is reorganized from <a href="https://drrosesbaby.com/faq/" target="_blank" rel="noopener noreferrer">Dr. Rose’s Baby’s published FAQ</a> and product guidance. This prototype does not diagnose, replace professional medical care, or add new medical guidance.</div>`
+    }
+
+    function doctorCard(){
+      return `<div class="dr-card"><div class="dr-badge">RT</div><div><strong>Guidance from Dr. Reyna Trevino, MD, FAAP</strong><span>Founder of Dr. Rose’s Baby, pediatrician, and mother of five. This concept only reorganizes information already published by Dr. Rose’s.</span></div></div>`
+    }
+
+    function home(){
+      return `<section class="panel">
+        <div class="intro"><div><h2>What are you dealing with?</h2><p>Choose the closest match and jump straight to the relevant Dr. Rose’s guidance.</p></div></div>
+        <div class="grid">
+          ${choice('congestion','My baby sounds congested','Noisy breathing, visible mucus, general stuffiness')}
+          ${choice('feeding','Stuffiness is making feeding harder','Baby keeps pulling away or pausing to breathe')}
+          ${choice('sleep','Stuffiness is disrupting sleep','Waking, snuffling, trouble settling')}
+          ${choice('call','I’m wondering if I should call the pediatrician','Review Dr. Rose’s published guidance on when to call')}
+          ${choice('use','I need help using Dr. Rose’s','See the published step-by-step technique')}
+          ${choice('compare','Why is Dr. Rose’s different?','Understand the product without digging through multiple pages')}
+        </div>
+        ${doctorCard()}
+        <div class="prototype-note"><strong>Prototype note:</strong><span>This is a UX/growth concept, not a medical tool. It changes how existing information is discovered, not what that information says.</span></div>
+        ${footer()}
+      </section>`
+    }
+
+    function shell(label,title,body,extra=''){
+      return `<section class="panel">
+        <div class="navrow"><div class="navleft"><button class="back" type="button" data-route="home">← Back</button><span class="label">${label}</span></div><button class="restart" type="button" data-route="home">Start over</button></div>
+        <div class="card"><h2>${title}</h2>${body}${extra}${source()}</div>
+        ${footer()}
+      </section>`
+    }
+
+    function congestion(){
+      return shell('Congestion guide','Does this sound like what you’re seeing?',
+        `<p>Dr. Rose’s FAQ lists noisy breathing, visible mucus, interrupted feeding, disrupted sleep, and irritability among the signs parents may notice with nasal congestion.</p>
+         <p class="muted">Instead of asking a tired parent to search a long FAQ, this path brings the next relevant pieces of Dr. Rose’s guidance forward immediately.</p>`,
+        `<div class="actions">
+          <button class="btn primary" type="button" data-route="use">Show me the published congestion-relief steps →</button>
+          <button class="btn" type="button" data-route="call">When does Dr. Rose’s say to call the pediatrician? →</button>
+        </div>`)
+    }
+
+    function feeding(){
+      return shell('Feeding + congestion','When stuffiness interrupts feeding',
+        `<p>Dr. Rose’s explains that congestion can make feeding harder because babies rely heavily on nasal breathing. A congested baby may pull away from the breast or bottle more often to catch a breath.</p>
+         <p class="muted">This path surfaces that exact guidance first, then gives the parent a direct route to the relevant product-use and safety information.</p>`,
+        `<div class="actions">
+          <button class="btn primary" type="button" data-route="use">See the published product-use steps →</button>
+          <button class="btn" type="button" data-route="call">Review pediatrician-contact guidance →</button>
+        </div>`)
+    }
+
+    function sleep(){
+      return shell('Sleep + congestion','When a stuffy nose is disrupting sleep',
+        `<p>Dr. Rose’s includes disrupted sleep and noisy breathing among the signs parents may notice when a baby is congested.</p>
+         <p class="muted">This route takes the parent directly from the symptom they recognize to the guidance that is most likely to be useful next.</p>`,
+        `<div class="actions"><button class="btn primary" type="button" data-route="use">Show me the published congestion-relief steps →</button></div>`)
+    }
+
+    function step(n,title,text){
+      return `<div class="step"><div class="num">${n}</div><div><strong>${title}</strong><span>${text}</span></div></div>`
+    }
+
+    function use(){
+      return shell('How to use','Dr. Trevino’s published approach',
+        `<p class="muted">The steps below are reorganized from Dr. Rose’s current FAQ.</p>
+         <div class="steps">
+          ${step(1,'Saline first','Apply one or two drops of infant saline and wait about 30–60 seconds to let it loosen mucus.')}
+          ${step(2,'Position gently','Aim the soft silicone tip only slightly into the nostril.')}
+          ${step(3,'Squeeze and release','Squeeze and release the bulb to generate suction.')}
+          ${step(4,'Continue without repeated reinsertion','The design allows repeated squeezing and releasing while the tip stays in place until the nostril is clear.')}
+          ${step(5,'Repeat on the other side if needed','Use the same approach for the other nostril as needed.')}
+         </div>`,
+        `<div class="actions">
+          <button class="btn" type="button" data-route="compare">Why is Dr. Rose’s designed differently? →</button>
+          <a class="btn external" href="https://drrosesbaby.com/product/dr-roses-nasal-aspirator/" target="_blank" rel="noopener noreferrer"><span>View the actual Dr. Rose’s product page</span><span>↗</span></a>
+        </div>`)
+    }
+
+    function call(){
+      return shell('Published safety guidance','When Dr. Rose’s says to contact your pediatrician',
+        `<p>The Dr. Rose’s FAQ tells parents to contact a pediatrician for concerning symptoms rather than relying only on home suction.</p>
+         <div class="safety"><ul>
+           <li>A fever, particularly in infants under 3 months</li>
+           <li>Difficulty breathing, rapid breathing, or nostril flaring</li>
+           <li>Significant trouble feeding or signs of dehydration</li>
+           <li>Congestion that does not improve or worsens over several days</li>
+           <li>Thick yellow or green mucus lasting more than 10–14 days</li>
+           <li>Any symptoms that feel concerning to the parent</li>
+         </ul></div>
+         <p><strong>Dr. Rose’s published guidance: “when in doubt, call your doctor.”</strong></p>
+         <p class="muted">This concept does not decide whether a child is safe, diagnose a condition, or replace a pediatrician. It simply makes Dr. Rose’s existing guidance easier to locate.</p>`)
+    }
+
+    function compare(){
+      return shell('Product education','Why Dr. Rose’s positions the product differently',
+        `<p class="muted">Instead of sending a parent away to compare multiple product pages, this path condenses the differences already described on the Dr. Rose’s website.</p>
+         <div class="compare">
+           <div class="mini"><strong>Traditional bulb</strong><p>Dr. Rose’s site highlights repeated squeeze/insert cycles, limited visibility, and harder cleaning.</p></div>
+           <div class="mini"><strong>Mouth suction</strong><p>Their positioning emphasizes avoiding parent mouth contact, replacement filters, and extra parts.</p></div>
+           <div class="mini"><strong>Dr. Rose’s</strong><p>Patented continuous suction, transparent silicone construction, no batteries, and no replacement filters.</p></div>
+         </div>`,
+        `<div class="actions">
+          <button class="btn primary" type="button" data-route="use">See how Dr. Rose’s is used →</button>
+          <a class="btn external" href="https://drrosesbaby.com/product/dr-roses-nasal-aspirator/" target="_blank" rel="noopener noreferrer"><span>View the actual product page</span><span>↗</span></a>
+        </div>`)
+    }
+
     const views={home,congestion,feeding,sleep,call,use,compare};
-    function render(route){screen.innerHTML=(views[route]||home)();screen.querySelectorAll('[data-route]').forEach(btn=>btn.addEventListener('click',()=>render(btn.dataset.route)));window.scrollTo({top:0,behavior:'smooth'})}
+
+    function render(route){
+      screen.innerHTML=(views[route]||home)();
+      screen.querySelectorAll('[data-route]').forEach(btn=>btn.addEventListener('click',()=>render(btn.dataset.route)));
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
     render('home');
   </script>
 </body>
